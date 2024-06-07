@@ -9,13 +9,14 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
+import { previewFeature } from './store/preview.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({
-      // [authFeature.name]: authFeature.reducer,
+      [previewFeature.name]: previewFeature.reducer,
     }),
     provideEffects([]),
     provideStoreDevtools({
