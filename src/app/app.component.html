@@ -1,10 +1,16 @@
-<div class="flex h-screen items-center justify-center">
+<div class="mt-16 flex items-center justify-center">
   <div>
     <app-share-content-title>
-      web site preview and screenshot
+      website screenshot and stats
     </app-share-content-title>
+    <div class="mt-8"></div>
+
     <app-input-url />
-    <app-preview-container [previews]="userPreviews()" />
+    <div class="mt-16"></div>
+
+    <app-preview-container [previews]="userPreviews()" class="mt-8" />
+    <div class="mt-16"></div>
+
     <app-code-container />
   </div>
 </div>

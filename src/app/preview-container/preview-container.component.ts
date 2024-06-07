@@ -7,6 +7,7 @@ import {
   input,
 } from '@angular/core';
 import { Preview } from '../app.types';
+import { SubTitleComponent } from '../share/content/title/sub-title.component';
 
 type ViewPreview = Preview & {
   shortUrl: string;
@@ -16,9 +17,9 @@ type ViewPreview = Preview & {
 @Component({
   selector: 'app-preview-container',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './preview-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, SubTitleComponent],
 })
 export class PreviewContainerComponent {
   previews = input.required<Preview[]>();

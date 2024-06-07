@@ -5,6 +5,7 @@ import { CodeContainerComponent } from './code-container/code-container.componen
 import { InputUrlComponent } from './input-url/input-url.component';
 import { PreviewContainerComponent } from './preview-container/preview-container.component';
 import { TitleComponent } from './share/content/title/title.component';
+import { SubTitleComponent } from './share/content/title/sub-title.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { TitleComponent } from './share/content/title/title.component';
     InputUrlComponent,
     PreviewContainerComponent,
     CodeContainerComponent,
+    SubTitleComponent,
   ],
 })
 export class AppComponent {
