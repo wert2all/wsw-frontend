@@ -5,8 +5,8 @@ import {
   ofType,
   ROOT_EFFECTS_INIT,
 } from '@ngrx/effects';
-
 import { map } from 'rxjs';
+
 import { StoreDispatchEffect } from '../../app.types';
 import { PreviewActions } from './preview.actions';
 import { StoragePreviewService } from './storage-preview.service';
