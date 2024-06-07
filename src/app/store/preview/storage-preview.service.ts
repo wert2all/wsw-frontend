@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { LocalStorageState } from './preview.types';
 
 @Injectable({
