@@ -6,11 +6,25 @@ import {
   ROOT_EFFECTS_INIT,
 } from '@ngrx/effects';
 
-import { StoreUnDispatchEffect } from '../../app.types';
+import { map } from 'rxjs';
+import { StoreDispatchEffect } from '../../app.types';
+import { PreviewActions } from './preview.actions';
+import { StoragePreviewService } from './storage-preview.service';
 
-const initState = (actions$ = inject(Actions)) =>
-  actions$.pipe(ofType(ROOT_EFFECTS_INIT));
+const initState = (
+  actions$ = inject(Actions),
+  storageService = inject(StoragePreviewService)
+) =>
+  actions$.pipe(
+    ofType(ROOT_EFFECTS_INIT),
+    map(() => storageService.readState()),
+    map(state =>
+      state
+        ? PreviewActions.applyInitialStateFromLocalStorage({ state })
+        : PreviewActions.createNewToken()
+    )
+  );
 
 export const previewEffects = {
-  initState: createEffect(initState, StoreUnDispatchEffect),
+  initState: createEffect(initState, StoreDispatchEffect),
 };
