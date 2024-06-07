@@ -1,0 +1,23 @@
+<div class="grid grid-cols-4 gap-4">
+  @for (view of views(); track $index) {
+    <div class="card card-compact w-96 bg-neutral shadow-xl">
+      <figure>
+        <img [src]="view.preview" [alt]="view.previewAltTitle" />
+      </figure>
+      <div class="card-body">
+        @if (view.title) {
+          <h2 class="card-title">{{ view.title }}</h2>
+        }
+        @if (view.description) {
+          <p>{{ view.description }}</p>
+        }
+
+        <p>
+          <a [href]="view.href" class="link" target="_blank">
+            {{ view.shortUrl }}
+          </a>
+        </p>
+      </div>
+    </div>
+  }
+</div>
