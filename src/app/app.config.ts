@@ -9,7 +9,8 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { previewFeature } from './store/preview.reducers';
+import { previewEffects } from './store/preview/preview.effects';
+import { previewFeature } from './store/preview/preview.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideStore({
       [previewFeature.name]: previewFeature.reducer,
     }),
-    provideEffects([]),
+    provideEffects([previewEffects]),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
