@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Signal,
   computed,
   input,
+  Signal,
 } from '@angular/core';
+
 import { Preview } from '../app.types';
 import { SubTitleComponent } from '../share/content/title/sub-title.component';
 
