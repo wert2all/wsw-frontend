@@ -45,6 +45,7 @@
     "daisyui": "^4.12.2",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-sonarjs": "^1.0.3",
     "eslint-plugin-unused-imports": "^4.0.0",
     "jasmine-core": "~5.1.2",
