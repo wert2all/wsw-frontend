@@ -19,7 +19,7 @@ const initState = (
     ofType(ROOT_EFFECTS_INIT),
     map(() => storageService.readState()),
     map(state =>
-      state
+      state.token
         ? PreviewActions.applyInitialStateFromLocalStorage({ state })
         : PreviewActions.createNewToken()
     )
