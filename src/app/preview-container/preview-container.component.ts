@@ -23,6 +23,7 @@ type ViewPreview = Preview & {
   imports: [CommonModule, SubTitleComponent],
 })
 export class PreviewContainerComponent {
+  token = input.required<string | undefined>();
   previews = input.required<Preview[]>();
 
   views: Signal<ViewPreview[]> = computed(() =>

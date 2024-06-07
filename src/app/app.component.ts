@@ -28,4 +28,5 @@ export class AppComponent {
       preview: 'https://fakeimg.pl/380x230/',
     },
   ]);
+  token = signal<string | undefined>('token');
 }

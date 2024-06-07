@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  effect,
   input,
   output,
 } from '@angular/core';
@@ -17,6 +18,7 @@ const URL_REGEXP =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputUrlComponent {
+  token = input.required<string | undefined>();
   isLoading = input<boolean>(false);
 
   urlInput = new FormControl('', [
@@ -24,7 +26,15 @@ export class InputUrlComponent {
     Validators.pattern(URL_REGEXP),
   ]);
   url = output<string>();
-
+  constructor() {
+    effect(() => {
+      if (!this.token()) {
+        this.urlInput.disable();
+      } else {
+        this.urlInput.enable();
+      }
+    });
+  }
   createPreview() {
     if (this.urlInput.valid && this.urlInput.value) {
       this.url.emit(this.urlInput.value);

@@ -5,12 +5,12 @@
     </app-share-content-title>
     <div class="mt-8"></div>
 
-    <app-input-url />
+    <app-input-url [token]="token()" />
     <div class="mt-16"></div>
 
-    <app-preview-container [previews]="userPreviews()" class="mt-8" />
+    <app-preview-container [previews]="userPreviews()" [token]="token()" />
     <div class="mt-16"></div>
 
-    <app-code-container />
+    <app-code-container [token]="token()" />
   </div>
 </div>
