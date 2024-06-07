@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Preview } from './app.types';
+import { CodeContainerComponent } from './code-container/code-container.component';
 import { InputUrlComponent } from './input-url/input-url.component';
 import { PreviewContainerComponent } from './preview-container/preview-container.component';
 import { TitleComponent } from './share/content/title/title.component';
@@ -14,6 +15,7 @@ import { TitleComponent } from './share/content/title/title.component';
     TitleComponent,
     InputUrlComponent,
     PreviewContainerComponent,
+    CodeContainerComponent,
   ],
 })
 export class AppComponent {
