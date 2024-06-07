@@ -10,7 +10,8 @@
     "lint:format": "prettier . --check",
     "format": "prettier . --write",
     "lint": "ng lint",
-    "lint:eslint": "ng lint"
+    "lint:eslint": "ng lint",
+    "release": "commit-and-tag-version"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "@typescript-eslint/utils": "8.0.0-alpha.28",
     "angular-eslint": "18.0.1",
     "autoprefixer": "^10.4.19",
+    "commit-and-tag-version": "^12.4.1",
     "daisyui": "^4.12.2",
     "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
