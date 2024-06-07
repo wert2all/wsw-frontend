@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint:format": "prettier . --check",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "lint": "ng lint",
+    "lint:eslint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +33,8 @@
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/jasmine": "~5.1.4",
+    "angular-eslint": "18.0.1",
+    "eslint": "^9.3.0",
     "jasmine-core": "~5.1.2",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",
@@ -39,6 +43,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.6.1",
-    "typescript": "~5.4.5"
+    "typescript": "~5.4.5",
+    "typescript-eslint": "8.0.0-alpha.20"
   }
 }
