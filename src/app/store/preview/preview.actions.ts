@@ -1,10 +1,12 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { PreviewState } from './preview.types';
+import { LocalStorageState } from './preview.types';
 
 export const PreviewActions = createActionGroup({
   source: 'Preview',
   events: {
-    'Apply initial state from localStorage': props<{ state: PreviewState }>(),
+    'Apply initial state from localStorage': props<{
+      state: LocalStorageState;
+    }>(),
     'Create new token': emptyProps(),
   },
 });

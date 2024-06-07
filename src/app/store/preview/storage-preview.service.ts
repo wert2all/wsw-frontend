@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { PreviewState } from './preview.types';
+import { LocalStorageState } from './preview.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoragePreviewService {
-  constructor() {}
-  readState(): PreviewState | undefined {
-    return undefined;
+  private readonly tokenKey = 'previewToken';
+  private readonly urlsKey = 'previewUrls';
+
+  readState(): LocalStorageState {
+    return {
+      token: localStorage.getItem(this.tokenKey) || undefined,
+      urls: JSON.parse(localStorage.getItem(this.urlsKey) || '[]'),
+    };
   }
 }
