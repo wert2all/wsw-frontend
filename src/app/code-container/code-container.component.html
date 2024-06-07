@@ -3,7 +3,7 @@
 <app-share-content-sub-title>
   Website preview image only
 </app-share-content-sub-title>
-<div class="mockup-code">
+<div class="mockup-code" [class.skeleton]="!token()">
   <pre>
     <code>
       &lt;img src=&quot;https://fakeimg.pl/380x230/&lt;site-url&gt;&quot;&gt;
@@ -15,7 +15,7 @@
 <app-share-content-sub-title>
   REST API with JSON response
 </app-share-content-sub-title>
-<div class="mockup-code">
+<div class="mockup-code" [class.skeleton]="!token()">
   <pre>
     <code>
       &lt;img src=&quot;https://fakeimg.pl/380x230/&lt;site-url&gt;&quot;&gt;

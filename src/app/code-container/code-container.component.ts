@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { SubTitleComponent } from '../share/content/title/sub-title.component';
 import { TitleComponent } from '../share/content/title/title.component';
@@ -11,4 +11,6 @@ import { TitleComponent } from '../share/content/title/title.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, TitleComponent, SubTitleComponent],
 })
-export class CodeContainerComponent {}
+export class CodeContainerComponent {
+  token = input.required<string | undefined>();
+}
