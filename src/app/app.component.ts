@@ -4,8 +4,8 @@ import { Preview } from './app.types';
 import { CodeContainerComponent } from './code-container/code-container.component';
 import { InputUrlComponent } from './input-url/input-url.component';
 import { PreviewContainerComponent } from './preview-container/preview-container.component';
-import { TitleComponent } from './share/content/title/title.component';
 import { SubTitleComponent } from './share/content/title/sub-title.component';
+import { TitleComponent } from './share/content/title/title.component';
 
 @Component({
   selector: 'app-root',
@@ -22,18 +22,6 @@ import { SubTitleComponent } from './share/content/title/sub-title.component';
 })
 export class AppComponent {
   userPreviews = signal<Preview[]>([
-    {
-      url: new URL('https://daisyui.com/components/card/'),
-      preview: 'https://fakeimg.pl/380x230/',
-    },
-    {
-      url: new URL('https://daisyui.com/components/card/'),
-      preview: 'https://fakeimg.pl/380x230/',
-    },
-    {
-      url: new URL('https://daisyui.com/components/card/'),
-      preview: 'https://fakeimg.pl/380x230/',
-    },
     {
       url: new URL('https://daisyui.com/components/card/'),
       preview: 'https://fakeimg.pl/380x230/',

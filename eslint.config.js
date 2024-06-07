@@ -4,6 +4,8 @@ const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const eslintConfigPrettier = require('eslint-config-prettier');
 const sonarjs = require('eslint-plugin-sonarjs');
+const unusedImports = require('eslint-plugin-unused-imports');
+
 module.exports = tseslint.config(
   {
     files: ['**/*.ts'],
@@ -13,11 +15,12 @@ module.exports = tseslint.config(
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
-    plugins: { sonarjs },
+    plugins: { sonarjs, unusedImports },
     processor: angular.processInlineTemplates,
     rules: {
       ...eslintConfigPrettier.rules,
       ...sonarjs.configs.recommended.rules,
+
       '@angular-eslint/directive-selector': [
         'error',
         {
