@@ -10,6 +10,7 @@ const simpleImportSort = require('eslint-plugin-simple-import-sort');
 module.exports = tseslint.config(
   {
     files: ['**/*.ts'],
+    ignores: ['src/app/api/graphql.ts'],
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
