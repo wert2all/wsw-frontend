@@ -11,6 +11,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
 import { previewEffects } from './store/preview/preview.effects';
 import { previewFeature } from './store/preview/preview.reducers';
+import { provideHttpClient } from '@angular/common/http';
+import { graphqlProvider } from './api/graphql.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,5 +30,7 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
       connectInZone: true, // If set to true, the connection is established within the Angular zone
     }),
+    provideHttpClient(),
+    graphqlProvider,
   ],
 };
