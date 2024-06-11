@@ -11,7 +11,8 @@
     "format": "prettier . --write",
     "lint": "ng lint",
     "lint:eslint": "ng lint",
-    "release": "commit-and-tag-version"
+    "release": "commit-and-tag-version",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "private": true,
   "dependencies": {
@@ -23,15 +24,15 @@
     "@angular/platform-browser": "^18.0.2",
     "@angular/platform-browser-dynamic": "^18.0.2",
     "@angular/router": "^18.0.2",
+    "@apollo/client": "^3.0.0",
     "@ngrx/effects": "^17.2.0",
     "@ngrx/signals": "^17.2.0",
     "@ngrx/store": "^17.2.0",
+    "apollo-angular": "^4.2.0",
+    "graphql": "^16",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",
-    "zone.js": "~0.14.7",
-    "apollo-angular": "^4.2.0",
-    "@apollo/client": "^3.0.0",
-    "graphql": "^16"
+    "zone.js": "~0.14.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.3",
@@ -39,6 +40,10 @@
     "@angular/compiler-cli": "^18.0.2",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/typescript": "^4.0.7",
+    "@graphql-codegen/typescript-apollo-angular": "^4.0.0",
+    "@graphql-codegen/typescript-operations": "^4.2.1",
     "@ngrx/store-devtools": "^17.2.0",
     "@types/jasmine": "~5.1.4",
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.28",
