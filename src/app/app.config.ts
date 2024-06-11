@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   isDevMode,
@@ -8,11 +9,10 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
+import { provideApollo } from './api/graphql.provider';
 import { routes } from './app.routes';
 import { previewEffects } from './store/preview/preview.effects';
 import { previewFeature } from './store/preview/preview.reducers';
-import { provideHttpClient } from '@angular/common/http';
-import { graphqlProvider } from './api/graphql.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +31,6 @@ export const appConfig: ApplicationConfig = {
       connectInZone: true, // If set to true, the connection is established within the Angular zone
     }),
     provideHttpClient(),
-    graphqlProvider,
+    provideApollo(),
   ],
 };

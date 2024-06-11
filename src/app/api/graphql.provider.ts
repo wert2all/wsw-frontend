@@ -1,22 +1,25 @@
-import { ApplicationConfig, inject } from '@angular/core';
-import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
-import { Apollo, APOLLO_OPTIONS } from 'apollo-angular';
+import { inject, makeEnvironmentProviders } from '@angular/core';
+import { ApolloLink, InMemoryCache } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
-const uri = 'http://localhost:8000/graphql'; // <-- add the URL of the GraphQL server here
+import { environment } from '../../environments/environment';
 
-export function apolloOptionsFactory(): ApolloClientOptions<any> {
-  const httpLink = inject(HttpLink);
-  return {
-    link: httpLink.create({ uri }),
-    cache: new InMemoryCache(),
-  };
-}
+const httpLink = (httpLink = inject(HttpLink)) =>
+  httpLink.create({ uri: environment.graphqlUrl });
 
-export const graphqlProvider: ApplicationConfig['providers'] = [
-  Apollo,
-  {
-    provide: APOLLO_OPTIONS,
-    useFactory: apolloOptionsFactory,
-  },
-];
+const baseLink = () =>
+  setContext(() => ({ headers: { Accept: 'charset=utf-8' } }));
+
+export const provideApollo = () =>
+  makeEnvironmentProviders([
+    Apollo,
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: () => ({
+        link: ApolloLink.from([baseLink(), httpLink()]),
+        cache: new InMemoryCache(),
+      }),
+    },
+  ]);
