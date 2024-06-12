@@ -6,4 +6,5 @@ export enum EnvironmentType {
 export interface Environment {
   type: EnvironmentType;
   graphqlUrl: string;
+  apiBase: string;
 }
