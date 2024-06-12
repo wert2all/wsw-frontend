@@ -9,5 +9,8 @@ export const PreviewActions = createActionGroup({
       state: LocalStorageState;
     }>(),
     'Create new token': emptyProps(),
+    'Success create token': props<{ token: string }>(),
+
+    'Empty token': emptyProps(),
   },
 });
