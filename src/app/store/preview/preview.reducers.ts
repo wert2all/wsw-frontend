@@ -3,15 +3,19 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { PreviewActions } from './preview.actions';
 import { PreviewState } from './preview.types';
 
-const initialState: PreviewState = { token: 'test_token' };
+const initialState: PreviewState = { token: undefined };
 
 export const previewFeature = createFeature({
   name: 'preview',
   reducer: createReducer(
     initialState,
-    on(PreviewActions.applyInitialStateFromLocalStorage, state => ({
+    on(PreviewActions.applyInitialStateFromLocalStorage, (_, { state }) => ({
       ...state,
-      token: state.token,
+    })),
+
+    on(PreviewActions.successCreateToken, (state, { token }) => ({
+      ...state,
+      token: token,
     }))
   ),
 });

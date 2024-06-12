@@ -5,7 +5,7 @@ import {
   ofType,
   ROOT_EFFECTS_INIT,
 } from '@ngrx/effects';
-import { catchError, exhaustMap, map, of } from 'rxjs';
+import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 
 import { ApiClient } from '../../api/graphql';
 import { StoreDispatchEffect, StoreUnDispatchEffect } from '../../app.types';
@@ -44,7 +44,16 @@ const createNewToken = (actions$ = inject(Actions), api = inject(ApiClient)) =>
     )
   );
 
+const successCreateToken = (
+  actions$ = inject(Actions),
+  storageService = inject(StoragePreviewService)
+) =>
+  actions$.pipe(
+    ofType(PreviewActions.successCreateToken),
+    tap(({ token }) => storageService.initState(token))
+  );
 export const previewEffects = {
   initState: createEffect(initState, StoreDispatchEffect),
-  createNewToke: createEffect(createNewToken, StoreUnDispatchEffect),
+  createNewToke: createEffect(createNewToken, StoreDispatchEffect),
+  successCreateToken: createEffect(successCreateToken, StoreUnDispatchEffect),
 };
