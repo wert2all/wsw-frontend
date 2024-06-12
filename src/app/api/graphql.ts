@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import * as ApolloCore from '@apollo/client/core';
 import { gql } from 'apollo-angular';
+import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
+import * as ApolloCore from '@apollo/client/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends Record<string, unknown>> = {
+export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
 };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
@@ -13,9 +13,10 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type MakeEmpty<T extends Record<string, unknown>, K extends keyof T> = {
-  [_ in K]?: never;
-};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T,
+> = { [_ in K]?: never };
 export type Incremental<T> =
   | T
   | {
@@ -30,11 +31,9 @@ export interface Scalars {
   Float: { input: number; output: number };
 }
 
-export type CreateTokenVariables = Exact<Record<string, never>>;
+export type CreateTokenVariables = Exact<{ [key: string]: never }>;
 
-export interface CreateToken {
-  token: string;
-}
+export type CreateToken = { token: string };
 
 export const CreateTokenDocument = gql`
   mutation CreateToken {
