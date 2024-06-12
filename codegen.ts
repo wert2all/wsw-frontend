@@ -1,7 +1,8 @@
-import type { CodegenConfig } from '@graphql-codegen/cli';
+import type * as cli from '@graphql-codegen/cli';
+
 import { environment } from './src/environments/environment';
 
-const config: CodegenConfig = {
+const config: cli.CodegenConfig = {
   overwrite: true,
   schema: environment.graphqlUrl,
   documents: ['./src/app/api/**/*.graphql'],
