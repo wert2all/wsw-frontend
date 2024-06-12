@@ -6,7 +6,7 @@
 <div class="mockup-code" [class.skeleton]="!token()">
   <pre>
     <code>
-      &lt;img src=&quot;https://fakeimg.pl/380x230/&lt;site-url&gt;&quot;&gt;
+      &lt;img src=&quot;{{ imgUrl() }}&lt;site-url&gt;&quot;&gt;
     </code>
 </pre>
 </div>
@@ -18,7 +18,17 @@
 <div class="mockup-code" [class.skeleton]="!token()">
   <pre>
     <code>
-      &lt;img src=&quot;https://fakeimg.pl/380x230/&lt;site-url&gt;&quot;&gt;
+      &lt;img src=&quot;{{ jsonUrl() }}&lt;site-url&gt;&quot;&gt;
+    </code>
+</pre>
+</div>
+
+<div class="mt-4"></div>
+<app-share-content-sub-title>GraphQL endpoint</app-share-content-sub-title>
+<div class="mockup-code" [class.skeleton]="!token()">
+  <pre>
+    <code>
+      &lt;img src=&quot;{{ gqlUrl() }}
     </code>
 </pre>
 </div>
