@@ -1,8 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { Preview } from './app.types';
 import { CodeContainerComponent } from './code-container/code-container.component';
 import { InputUrlComponent } from './input-url/input-url.component';
 import { PreviewContainerComponent } from './preview-container/preview-container.component';
@@ -24,12 +23,8 @@ import { previewFeature } from './store/preview/preview.reducers';
   ],
 })
 export class AppComponent {
-  token = inject(Store).selectSignal(previewFeature.selectToken);
+  private readonly store = inject(Store);
 
-  userPreviews = signal<Preview[]>([
-    {
-      url: new URL('https://daisyui.com/components/card/'),
-      preview: 'https://fakeimg.pl/380x230/',
-    },
-  ]);
+  token = this.store.selectSignal(previewFeature.selectToken);
+  userPreviews = this.store.selectSignal(previewFeature.selectPreview)
 }
