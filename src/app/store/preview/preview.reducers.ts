@@ -9,13 +9,19 @@ export const previewFeature = createFeature({
   name: 'preview',
   reducer: createReducer(
     initialState,
-    on(PreviewActions.applyInitialStateFromLocalStorage, (_, { state }) => ({
-      ...state,
-    })),
+    on(
+      PreviewActions.applyInitialStateFromLocalStorage,
+      (_, { state }): PreviewState => ({
+        ...state,
+      })
+    ),
 
-    on(PreviewActions.successCreateToken, (state, { token }) => ({
-      ...state,
-      token: token,
-    }))
+    on(
+      PreviewActions.successCreateToken,
+      (state, { token }): PreviewState => ({
+        ...state,
+        token: token,
+      })
+    )
   ),
 });

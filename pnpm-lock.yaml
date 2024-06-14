@@ -87,6 +87,9 @@ importers:
       '@graphql-codegen/typescript-operations':
         specifier: ^4.2.1
         version: 4.2.1(encoding@0.1.13)(graphql@16.8.2)
+      '@ngrx/eslint-plugin':
+        specifier: ^18.0.0
+        version: 18.0.0(@typescript-eslint/utils@8.0.0-alpha.28(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)(typescript@5.4.5)
       '@ngrx/store-devtools':
         specifier: ^18.0.0
         version: 18.0.0(@ngrx/store@18.0.0(@angular/core@18.0.3(rxjs@7.8.1)(zone.js@0.14.7))(rxjs@7.8.1))(rxjs@7.8.1)
@@ -1842,6 +1845,13 @@ packages:
       '@angular/core': ^18.0.0
       '@ngrx/store': 18.0.0
       rxjs: ^6.5.3 || ^7.5.0
+
+  '@ngrx/eslint-plugin@18.0.0':
+    resolution: {integrity: sha512-o3hQhDU3TuRJUypUrVYSHQua17XWhnf8g8/qPUPRySx0mPCTWhoL+uq3WiPd60nLu4fJDA80qIe/xprILxLA0A==}
+    peerDependencies:
+      '@typescript-eslint/utils': ^7.11.0 || ^8.0.0-alpha.20
+      eslint: ^8.57.0 || ^9.0.0
+      typescript: '*'
 
   '@ngrx/operators@17.0.0-beta.0':
     resolution: {integrity: sha512-EbO8AONuQ6zo2v/mPyBOi4y0CTAp1x4Z+bx7ZF+Pd8BL5ma53BTCL1TmzaeK5zPUe0yApudLk9/ZbHXPnVox5A==}
@@ -8929,6 +8939,14 @@ snapshots:
       '@ngrx/store': 18.0.0(@angular/core@18.0.3(rxjs@7.8.1)(zone.js@0.14.7))(rxjs@7.8.1)
       rxjs: 7.8.1
       tslib: 2.6.3
+
+  '@ngrx/eslint-plugin@18.0.0(@typescript-eslint/utils@8.0.0-alpha.28(eslint@9.4.0)(typescript@5.4.5))(eslint@9.4.0)(typescript@5.4.5)':
+    dependencies:
+      '@typescript-eslint/utils': 8.0.0-alpha.28(eslint@9.4.0)(typescript@5.4.5)
+      eslint: 9.4.0
+      semver: 7.6.2
+      strip-json-comments: 3.1.1
+      typescript: 5.4.5
 
   '@ngrx/operators@17.0.0-beta.0(rxjs@7.8.1)':
     dependencies:

@@ -44,6 +44,7 @@
     "@graphql-codegen/typescript": "^4.0.7",
     "@graphql-codegen/typescript-apollo-angular": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^4.2.1",
+    "@ngrx/eslint-plugin": "^18.0.0",
     "@ngrx/store-devtools": "^18.0.0",
     "@types/jasmine": "~5.1.4",
     "@typescript-eslint/eslint-plugin": "8.0.0-alpha.28",
