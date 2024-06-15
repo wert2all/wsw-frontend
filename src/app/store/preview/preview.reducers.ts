@@ -3,7 +3,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { PreviewActions } from './preview.actions';
 import { PreviewState } from './preview.types';
 
-const initialState: PreviewState = { token: undefined };
+const initialState: PreviewState = { token: undefined, previews: [] };
 
 export const previewFeature = createFeature({
   name: 'preview',
@@ -13,6 +13,7 @@ export const previewFeature = createFeature({
       PreviewActions.applyInitialStateFromLocalStorage,
       (_, { state }): PreviewState => ({
         ...state,
+        previews: [],
       })
     ),
 

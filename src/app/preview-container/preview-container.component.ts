@@ -7,14 +7,15 @@ import {
   Signal,
 } from '@angular/core';
 
-import { Preview } from '../app.types';
 import { SubTitleComponent } from '../share/content/title/sub-title.component';
+import { Preview } from '../store/preview/preview.types';
 
 type ViewPreview = Preview & {
   shortUrl: string;
   href: string;
   previewAltTitle: string;
 };
+
 @Component({
   selector: 'app-preview-container',
   standalone: true,
