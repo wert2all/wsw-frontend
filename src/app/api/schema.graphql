@@ -6,22 +6,30 @@ directive @defer(
   label: String
 ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
 
+interface MinimalPreviewData {
+  id: Int!
+  status: Status!
+  url: String!
+}
+
 type Mutation {
+  addUrl(token: String!, url: String!): MinimalPreviewData
   createToken: String!
 }
 
+type PreviewData implements MinimalPreviewData {
+  id: Int!
+  image: String!
+  status: Status!
+  url: String!
+}
+
 type Query {
-  todos: [Todo!]!
+  getPreviewData(token: String!, url: String!): PreviewData
 }
 
-type Todo {
-  done: Boolean!
-  id: ID!
-  text: String!
-  user: User!
-}
-
-type User {
-  id: ID!
-  name: String!
+enum Status {
+  error
+  pending
+  success
 }

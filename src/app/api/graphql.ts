@@ -31,6 +31,12 @@ export interface Scalars {
   Float: { input: number; output: number };
 }
 
+export enum Status {
+  error = 'error',
+  pending = 'pending',
+  success = 'success',
+}
+
 export type CreateTokenVariables = Exact<{ [key: string]: never }>;
 
 export type CreateToken = { token: string };
