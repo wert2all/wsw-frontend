@@ -1,3 +1,9 @@
 mutation CreateToken {
   token: createToken
 }
+
+mutation AddUrl($token: String!, $url: String!) {
+  preview: addUrl(token: $token, url: $url) {
+    ...MinimalPreview
+  }
+}
