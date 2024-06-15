@@ -31,7 +31,7 @@
         [class.skeleton]="isLoading()"
         class="btn btn-primary"
         (click)="createPreview()"
-        [attr.disabled]="!this.urlInput.valid ? true : null">
+        [attr.disabled]="!this.urlInput.valid || isLoading() ? true : null">
         create
       </button>
     </div>

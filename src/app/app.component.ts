@@ -28,8 +28,9 @@ export class AppComponent {
   token = this.store.selectSignal(previewFeature.selectToken);
 
   userPreviews = this.store.selectSignal(previewFeature.selectPreviews);
+  isLoading = this.store.selectSignal(previewFeature.selectIsLoading);
 
-  pushUrl(url: string) {
+  addUrl(url: string) {
     this.store.dispatch(PreviewActions.addNewUrl({ url }));
   }
 }
