@@ -23,7 +23,7 @@ export const previewFeature = createFeature({
     on(
       PreviewActions.createNewToken,
       PreviewActions.addNewUrl,
-      (state: PreviewState) => ({ ...state, isLoading: true })
+      (state: PreviewState): PreviewState => ({ ...state, isLoading: true })
     ),
 
     on(

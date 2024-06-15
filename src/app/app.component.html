@@ -5,12 +5,18 @@
     </app-share-content-title>
     <div class="mt-8"></div>
 
-    <app-input-url [token]="token()" (url)="pushUrl($event)" />
+    <app-input-url
+      [token]="token()"
+      (url)="addUrl($event)"
+      [isLoading]="isLoading()" />
     <div class="mt-16"></div>
 
-    <app-preview-container [previews]="userPreviews()" [token]="token()" />
+    <app-preview-container
+      [previews]="userPreviews()"
+      [token]="token()"
+      [isLoading]="isLoading()" />
     <div class="mt-16"></div>
 
-    <app-code-container [token]="token()" />
+    <app-code-container [token]="token()" [isLoading]="isLoading()" />
   </div>
 </div>

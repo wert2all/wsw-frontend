@@ -3,7 +3,7 @@
 <app-share-content-sub-title>
   Website preview image only
 </app-share-content-sub-title>
-<div class="mockup-code" [class.skeleton]="!token()">
+<div class="mockup-code" [class.skeleton]="!token() || isLoading()">
   <pre>
     <code>
       &lt;img src=&quot;{{ imgUrl() }}&lt;site-url&gt;&quot;&gt;
@@ -15,7 +15,7 @@
 <app-share-content-sub-title>
   REST API with JSON response
 </app-share-content-sub-title>
-<div class="mockup-code" [class.skeleton]="!token()">
+<div class="mockup-code" [class.skeleton]="!token() || isLoading()">
   <pre>
     <code>
       &lt;img src=&quot;{{ jsonUrl() }}&lt;site-url&gt;&quot;&gt;
@@ -25,7 +25,7 @@
 
 <div class="mt-4"></div>
 <app-share-content-sub-title>GraphQL endpoint</app-share-content-sub-title>
-<div class="mockup-code" [class.skeleton]="!token()">
+<div class="mockup-code" [class.skeleton]="!token() || isLoading()">
   <pre>
     <code>
       &lt;img src=&quot;{{ gqlUrl() }}

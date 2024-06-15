@@ -21,6 +21,7 @@ import { TitleComponent } from '../share/content/title/title.component';
 export class CodeContainerComponent {
   private readonly apiUrlService = inject(ApiUrlService);
   token = input.required<string | undefined>();
+  isLoading = input<boolean>(false);
 
   imgUrl = computed(() => {
     const token = this.token();

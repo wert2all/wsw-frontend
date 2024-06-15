@@ -25,6 +25,7 @@ type ViewPreview = Preview & {
 })
 export class PreviewContainerComponent {
   token = input.required<string | undefined>();
+  isLoading = input<boolean>(false);
   previews = input.required<Preview[]>();
 
   views: Signal<ViewPreview[]> = computed(() =>
