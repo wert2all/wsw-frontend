@@ -1,3 +1,5 @@
+import { Loadable } from '../../app.types';
+
 export interface LocalStorageState {
   token: string | undefined;
   urls: string[];
@@ -11,7 +13,7 @@ export interface Preview {
   status: string;
 }
 
-export interface PreviewState {
+export interface PreviewState extends Loadable {
   token: string | undefined;
   previews: Preview[];
 }
