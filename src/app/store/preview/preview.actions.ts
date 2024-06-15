@@ -11,6 +11,8 @@ export const PreviewActions = createActionGroup({
     'Create new token': emptyProps(),
     'Success create token': props<{ token: string }>(),
 
+    'Add new url': props<{ url: string }>(),
+
     'Empty token': emptyProps(),
   },
 });

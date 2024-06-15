@@ -5,7 +5,7 @@
     </app-share-content-title>
     <div class="mt-8"></div>
 
-    <app-input-url [token]="token()" />
+    <app-input-url [token]="token()" (url)="pushUrl($event)" />
     <div class="mt-16"></div>
 
     <app-preview-container [previews]="userPreviews()" [token]="token()" />

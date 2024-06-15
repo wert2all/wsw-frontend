@@ -1,12 +1,5 @@
 import { EffectConfig } from '@ngrx/effects';
 
-export interface Preview {
-  url: URL;
-  preview: string;
-  title?: string;
-  description?: string;
-}
-
 export const StoreDispatchEffect: EffectConfig & {
   functional: true;
   dispatch?: true;
