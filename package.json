@@ -26,6 +26,7 @@
     "@angular/router": "^18.0.3",
     "@apollo/client": "^3.10.5",
     "@ngrx/effects": "^18.0.0",
+    "@ngrx/operators": "^18.0.0",
     "@ngrx/signals": "18.0.0-rc.1",
     "@ngrx/store": "^18.0.0",
     "apollo-angular": "^7.0.2",

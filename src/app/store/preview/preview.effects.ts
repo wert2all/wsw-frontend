@@ -5,11 +5,14 @@ import {
   ofType,
   ROOT_EFFECTS_INIT,
 } from '@ngrx/effects';
+import { concatLatestFrom } from '@ngrx/operators';
+import { Store } from '@ngrx/store';
 import { catchError, exhaustMap, map, of, tap } from 'rxjs';
 
 import { ApiClient } from '../../api/graphql';
 import { StoreDispatchEffect, StoreUnDispatchEffect } from '../../app.types';
 import { PreviewActions } from './preview.actions';
+import { previewFeature } from './preview.reducers';
 import { StoragePreviewService } from './storage-preview.service';
 
 const initState = (
@@ -52,8 +55,35 @@ const successCreateToken = (
     ofType(PreviewActions.successCreateToken),
     tap(({ token }) => storageService.initState(token))
   );
+
+const addUrl = (
+  actions$ = inject(Actions),
+  api = inject(ApiClient),
+  store = inject(Store)
+) =>
+  actions$.pipe(
+    ofType(PreviewActions.addNewUrl),
+    concatLatestFrom(() => store.select(previewFeature.selectToken)),
+    exhaustMap(([{ url }, token]) =>
+      token
+        ? api.addUrl({ token: token, url: url }).pipe(
+            map(result => result.data?.preview),
+            map(preview =>
+              preview ? { ...preview, url: new URL(url) } : undefined
+            )
+          )
+        : of(undefined)
+    ),
+    map(preview =>
+      preview
+        ? PreviewActions.successAddNewUrl({ preview })
+        : PreviewActions.emptyTokenOnAddingNewUrl()
+    )
+  );
+
 export const previewEffects = {
   initState: createEffect(initState, StoreDispatchEffect),
   createNewToke: createEffect(createNewToken, StoreDispatchEffect),
   successCreateToken: createEffect(successCreateToken, StoreUnDispatchEffect),
+  addUrl: createEffect(addUrl, StoreDispatchEffect),
 };

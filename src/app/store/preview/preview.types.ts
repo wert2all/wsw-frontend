@@ -7,7 +7,7 @@ export interface LocalStorageState {
 
 export interface Preview {
   url: URL;
-  preview: string;
+  preview?: string;
   title?: string;
   description?: string;
   status: string;

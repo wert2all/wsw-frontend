@@ -37,10 +37,26 @@ export enum Status {
   success = 'success',
 }
 
+export type MinimalPreview = { id: number; status: Status; url: string };
+
 export type CreateTokenVariables = Exact<{ [key: string]: never }>;
 
 export type CreateToken = { token: string };
 
+export type AddUrlVariables = Exact<{
+  token: Scalars['String']['input'];
+  url: Scalars['String']['input'];
+}>;
+
+export type AddUrl = { preview?: MinimalPreview | null };
+
+export const MinimalPreview = gql`
+  fragment MinimalPreview on MinimalPreviewData {
+    id
+    status
+    url
+  }
+`;
 export const CreateTokenDocument = gql`
   mutation CreateToken {
     token: createToken
@@ -60,6 +76,25 @@ export class CreateTokenMutation extends Apollo.Mutation<
     super(apollo);
   }
 }
+export const AddUrlDocument = gql`
+  mutation AddUrl($token: String!, $url: String!) {
+    preview: addUrl(token: $token, url: $url) {
+      ...MinimalPreview
+    }
+  }
+  ${MinimalPreview}
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AddUrlMutation extends Apollo.Mutation<AddUrl, AddUrlVariables> {
+  override document = AddUrlDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -68,12 +103,22 @@ interface MutationOptionsAlone<T, V>
 
 @Injectable({ providedIn: 'root' })
 export class ApiClient {
-  constructor(private createTokenMutation: CreateTokenMutation) {}
+  constructor(
+    private createTokenMutation: CreateTokenMutation,
+    private addUrlMutation: AddUrlMutation
+  ) {}
 
   createToken(
     variables?: CreateTokenVariables,
     options?: MutationOptionsAlone<CreateToken, CreateTokenVariables>
   ) {
     return this.createTokenMutation.mutate(variables, options);
+  }
+
+  addUrl(
+    variables: AddUrlVariables,
+    options?: MutationOptionsAlone<AddUrl, AddUrlVariables>
+  ) {
+    return this.addUrlMutation.mutate(variables, options);
   }
 }
