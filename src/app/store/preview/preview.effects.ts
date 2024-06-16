@@ -70,18 +70,17 @@ const addUrl = (
         ? api.addUrl({ token: token, url: url }).pipe(
             map(result => result.data?.preview),
             map(preview => {
+              let previewData: Preview | undefined = undefined;
               if (preview) {
-                const previewData: Preview = {
+                previewData = {
                   status: preview.status,
                   url: new URL(url),
                 };
                 if (preview.image) {
                   previewData.preview = preview.image;
                 }
-                return previewData;
-              } else {
-                return undefined;
               }
+              return previewData;
             })
           )
         : of(undefined)
