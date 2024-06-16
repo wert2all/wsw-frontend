@@ -13,6 +13,7 @@ import { ApiClient } from '../../api/graphql';
 import { StoreDispatchEffect, StoreUnDispatchEffect } from '../../app.types';
 import { PreviewActions } from './preview.actions';
 import { previewFeature } from './preview.reducers';
+import { Preview } from './preview.types';
 import { StoragePreviewService } from './storage-preview.service';
 
 const initState = (
@@ -68,9 +69,20 @@ const addUrl = (
       token
         ? api.addUrl({ token: token, url: url }).pipe(
             map(result => result.data?.preview),
-            map(preview =>
-              preview ? { ...preview, url: new URL(url) } : undefined
-            )
+            map(preview => {
+              if (preview) {
+                const previewData: Preview = {
+                  status: preview.status,
+                  url: new URL(url),
+                };
+                if (preview.image) {
+                  previewData.preview = preview.image;
+                }
+                return previewData;
+              } else {
+                return undefined;
+              }
+            })
           )
         : of(undefined)
     ),

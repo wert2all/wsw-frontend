@@ -1,5 +1,6 @@
-fragment MinimalPreview on MinimalPreviewData {
+fragment Preview on PreviewData {
   id
-  status
   url
+  status
+  image
 }

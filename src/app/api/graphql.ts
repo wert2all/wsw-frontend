@@ -37,7 +37,12 @@ export enum Status {
   success = 'success',
 }
 
-export type MinimalPreview = { id: number; status: Status; url: string };
+export type Preview = {
+  id: number;
+  url: string;
+  status: Status;
+  image?: string | null;
+};
 
 export type CreateTokenVariables = Exact<{ [key: string]: never }>;
 
@@ -48,13 +53,14 @@ export type AddUrlVariables = Exact<{
   url: Scalars['String']['input'];
 }>;
 
-export type AddUrl = { preview?: MinimalPreview | null };
+export type AddUrl = { preview?: Preview | null };
 
-export const MinimalPreview = gql`
-  fragment MinimalPreview on MinimalPreviewData {
+export const Preview = gql`
+  fragment Preview on PreviewData {
     id
-    status
     url
+    status
+    image
   }
 `;
 export const CreateTokenDocument = gql`
@@ -79,10 +85,10 @@ export class CreateTokenMutation extends Apollo.Mutation<
 export const AddUrlDocument = gql`
   mutation AddUrl($token: String!, $url: String!) {
     preview: addUrl(token: $token, url: $url) {
-      ...MinimalPreview
+      ...Preview
     }
   }
-  ${MinimalPreview}
+  ${Preview}
 `;
 
 @Injectable({
