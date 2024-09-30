@@ -13,13 +13,14 @@ type Mutation {
 
 type PreviewData {
   id: Int!
-  image: String
+  image: String!
   status: Status!
   url: String!
 }
 
 type Query {
   getPreviewData(token: String!, url: String!): PreviewData
+  verifyToken(token: String!): Boolean
 }
 
 enum Status {
