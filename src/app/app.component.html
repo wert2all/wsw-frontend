@@ -11,12 +11,14 @@
       [token]="token()"
       (url)="addUrl($event)"
       [isLoading]="isLoading()" />
+
     <div class="mt-4 lg:mt-16"></div>
 
     <app-preview-container
       [previews]="userPreviews()"
       [token]="token()"
       [isLoading]="isLoading()" />
+
     <app-code-container [token]="token()" [isLoading]="isLoading()" />
   </div>
   <app-footer />
