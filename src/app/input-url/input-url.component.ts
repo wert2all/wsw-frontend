@@ -7,15 +7,22 @@ import {
   output,
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { phosphorLinkSimpleBold } from '@ng-icons/phosphor-icons/bold';
 const URL_REGEXP =
   /^[A-Za-z][A-Za-z\d.+-]*:\/*(?:\w+(?::\w+)?@)?[^\s/]+(?::\d+)?(?:\/[\w#!:.?+=&%@\-/]*)?$/;
 
 @Component({
   selector: 'app-input-url',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgIconComponent],
   templateUrl: './input-url.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    provideIcons({
+      phosphorLinkSimpleBold,
+    }),
+  ],
 })
 export class InputUrlComponent {
   token = input.required<string | undefined>();
