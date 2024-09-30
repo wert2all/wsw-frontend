@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./dist/wsw-frontend/browser",
+    "public": "./dist/previewly-frontend/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
