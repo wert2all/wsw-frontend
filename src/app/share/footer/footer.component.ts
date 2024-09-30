@@ -8,6 +8,7 @@ import { phosphorGithubLogo } from '@ng-icons/phosphor-icons/regular';
   standalone: true,
   imports: [CommonModule, NgIconComponent],
   templateUrl: './footer.component.html',
+
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ phosphorGithubLogo })],
 })
