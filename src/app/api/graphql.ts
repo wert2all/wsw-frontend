@@ -41,7 +41,7 @@ export type Preview = {
   id: number;
   url: string;
   status: Status;
-  image?: string | null;
+  image: string;
 };
 
 export type CreateTokenVariables = Exact<{ [key: string]: never }>;
@@ -54,6 +54,12 @@ export type AddUrlVariables = Exact<{
 }>;
 
 export type AddUrl = { preview?: Preview | null };
+
+export type VerifyTokenVariables = Exact<{
+  token: Scalars['String']['input'];
+}>;
+
+export type VerifyToken = { isValid?: boolean | null };
 
 export const Preview = gql`
   fragment Preview on PreviewData {
@@ -101,8 +107,33 @@ export class AddUrlMutation extends Apollo.Mutation<AddUrl, AddUrlVariables> {
     super(apollo);
   }
 }
+export const VerifyTokenDocument = gql`
+  query VerifyToken($token: String!) {
+    isValid: verifyToken(token: $token)
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class VerifyTokenQuery extends Apollo.Query<
+  VerifyToken,
+  VerifyTokenVariables
+> {
+  override document = VerifyTokenDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+interface WatchQueryOptionsAlone<V extends ApolloCore.OperationVariables>
+  extends Omit<ApolloCore.WatchQueryOptions<V>, 'query' | 'variables'> {}
+
+interface QueryOptionsAlone<V>
+  extends Omit<ApolloCore.QueryOptions<V>, 'query' | 'variables'> {}
 
 interface MutationOptionsAlone<T, V>
   extends Omit<ApolloCore.MutationOptions<T, V>, 'mutation' | 'variables'> {}
@@ -111,7 +142,8 @@ interface MutationOptionsAlone<T, V>
 export class ApiClient {
   constructor(
     private createTokenMutation: CreateTokenMutation,
-    private addUrlMutation: AddUrlMutation
+    private addUrlMutation: AddUrlMutation,
+    private verifyTokenQuery: VerifyTokenQuery
   ) {}
 
   createToken(
@@ -126,5 +158,19 @@ export class ApiClient {
     options?: MutationOptionsAlone<AddUrl, AddUrlVariables>
   ) {
     return this.addUrlMutation.mutate(variables, options);
+  }
+
+  verifyToken(
+    variables: VerifyTokenVariables,
+    options?: QueryOptionsAlone<VerifyTokenVariables>
+  ) {
+    return this.verifyTokenQuery.fetch(variables, options);
+  }
+
+  verifyTokenWatch(
+    variables: VerifyTokenVariables,
+    options?: WatchQueryOptionsAlone<VerifyTokenVariables>
+  ) {
+    return this.verifyTokenQuery.watch(variables, options);
   }
 }

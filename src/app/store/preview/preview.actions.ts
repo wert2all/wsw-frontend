@@ -5,6 +5,8 @@ import { LocalStorageState, Preview } from './preview.types';
 export const PreviewActions = createActionGroup({
   source: 'Preview',
   events: {
+    'Check localStorage token': props<{ token: string }>(),
+
     'Apply initial state from localStorage': props<{
       state: LocalStorageState;
     }>(),

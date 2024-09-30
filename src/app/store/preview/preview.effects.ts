@@ -25,9 +25,30 @@ const initState = (
     map(() => storageService.readState()),
     map(state =>
       state.token
-        ? PreviewActions.applyInitialStateFromLocalStorage({ state })
+        ? PreviewActions.checkLocalStorageToken({ token: state.token })
         : PreviewActions.createNewToken()
     )
+  );
+
+const checkSavedToken = (
+  actions$ = inject(Actions),
+  api = inject(ApiClient),
+  storageService = inject(StoragePreviewService)
+) =>
+  actions$.pipe(
+    ofType(PreviewActions.checkLocalStorageToken),
+    exhaustMap(({ token }) => {
+      return api.verifyToken({ token: token }).pipe(
+        map(result => result.data?.isValid || false),
+        map(isValid =>
+          isValid
+            ? PreviewActions.applyInitialStateFromLocalStorage({
+                state: { ...storageService.readState(), token: token },
+              })
+            : PreviewActions.createNewToken()
+        )
+      );
+    })
   );
 
 const createNewToken = (actions$ = inject(Actions), api = inject(ApiClient)) =>
@@ -94,7 +115,10 @@ const addUrl = (
 
 export const previewEffects = {
   initState: createEffect(initState, StoreDispatchEffect),
+
+  checkSavedToken: createEffect(checkSavedToken, StoreDispatchEffect),
   createNewToke: createEffect(createNewToken, StoreDispatchEffect),
   successCreateToken: createEffect(successCreateToken, StoreUnDispatchEffect),
+
   addUrl: createEffect(addUrl, StoreDispatchEffect),
 };
