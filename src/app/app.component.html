@@ -1,25 +1,23 @@
-<div class="mt-16 flex items-center justify-center">
-  <div>
-    <app-logo />
-    <div class="mb-6"></div>
-    <app-share-content-sub-title>
-      website screenshot and stats
-    </app-share-content-sub-title>
-    <div class="mt-8"></div>
+<div class="container mx-auto shadow-lg lg:mt-16">
+  <app-logo />
+  <div class="mb-6"></div>
+  <app-share-content-sub-title>
+    website screenshot and stats
+  </app-share-content-sub-title>
+  <div class="mt-8"></div>
 
-    <app-input-url
-      [token]="token()"
-      (url)="addUrl($event)"
-      [isLoading]="isLoading()" />
-    <div class="mt-16"></div>
+  <app-input-url
+    [token]="token()"
+    (url)="addUrl($event)"
+    [isLoading]="isLoading()" />
+  <div class="mt-16"></div>
 
-    <app-preview-container
-      [previews]="userPreviews()"
-      [token]="token()"
-      [isLoading]="isLoading()" />
-    <div class="mt-16"></div>
+  <app-preview-container
+    [previews]="userPreviews()"
+    [token]="token()"
+    [isLoading]="isLoading()" />
+  <div class="mt-16"></div>
 
-    <app-code-container [token]="token()" [isLoading]="isLoading()" />
-    <app-footer />
-  </div>
+  <app-code-container [token]="token()" [isLoading]="isLoading()" />
+  <app-footer />
 </div>
