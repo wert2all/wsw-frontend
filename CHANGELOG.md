@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.4](https://github.com/wert2all/previewly-frontend/compare/v0.0.3...v0.0.4) (2024-09-30)
+
+### Features
+
+- add a simple logo ([0bc6eb6](https://github.com/wert2all/previewly-frontend/commit/0bc6eb61b7a7201bef019e0fe712e8dd689fc1ce))
+- add deployment to server ([d9ea198](https://github.com/wert2all/previewly-frontend/commit/d9ea198d79a91a14261c600ad4afe1e7894a5a10))
+- add logo component ([bc2ff4c](https://github.com/wert2all/previewly-frontend/commit/bc2ff4caa76db7bf67dbe17e1c0889c04f799b60))
+- checking token after init ([a6d1264](https://github.com/wert2all/previewly-frontend/commit/a6d126448f4c52db2521b29c8559f0e79a7b5fd4))
+
+### Bug Fixes
+
+- fix api domain ([cab2f92](https://github.com/wert2all/previewly-frontend/commit/cab2f927d29f81f8f8c064212ce0bebf6f4afbd6))
+- rename project ([3b1bb6b](https://github.com/wert2all/previewly-frontend/commit/3b1bb6b55eb09b4a5d62be89ef0cb8c8b94e8747))
+- update production environment ([5ed7e2c](https://github.com/wert2all/previewly-frontend/commit/5ed7e2c9dc3b1f041c893a0d53d05f31caf28b6f))
+
 ## [0.0.3](https://github.com/wert2all/wsw-frontend/compare/v0.0.2...v0.0.3) (2024-07-31)
 
 ### Bug Fixes
