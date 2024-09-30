@@ -12,6 +12,4 @@ import { phosphorGithubLogo } from '@ng-icons/phosphor-icons/regular';
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ phosphorGithubLogo })],
 })
-export class FooterComponent {
-  currentYear: string = new Date().getFullYear().toString();
-}
+export class FooterComponent {}
