@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "wsw-frontend": {
+    "previewly-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/wsw-frontend",
+            "outputPath": "dist/previewly-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "wsw-frontend:build:production"
+              "buildTarget": "previewly-frontend:build:production"
             },
             "development": {
-              "buildTarget": "wsw-frontend:build:development"
+              "buildTarget": "previewly-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
