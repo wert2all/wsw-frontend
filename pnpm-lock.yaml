@@ -35,6 +35,12 @@ importers:
       '@apollo/client':
         specifier: ^3.11.8
         version: 3.11.8(graphql-ws@5.16.0(graphql@16.9.0))(graphql@16.9.0)
+      '@ng-icons/core':
+        specifier: ^29.5.1
+        version: 29.5.1(@angular/common@18.2.6(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
+      '@ng-icons/phosphor-icons':
+        specifier: ^29.5.1
+        version: 29.5.1
       '@ngrx/effects':
         specifier: ^18.0.2
         version: 18.0.2(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(@ngrx/store@18.0.2(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)
@@ -1900,6 +1906,16 @@ packages:
     resolution: {integrity: sha512-x0fWaQtYp4E6sktbsdAqnehxDgEc/VwM7uLsRCYWaiGu0ykYdZPiS8zCWdnjHwyiumousxfBm4SO31eXqwEZhQ==}
     cpu: [x64]
     os: [win32]
+
+  '@ng-icons/core@29.5.1':
+    resolution: {integrity: sha512-wPpNqgoAlbJ0QAxfH2EAfT10ohtwXLQSXoWQ4a1tEhqXOn5kUAA8MqGgl5kILkiVCd8vvvPckLrt84LXQPWVCQ==}
+    peerDependencies:
+      '@angular/common': '>=18.0.0'
+      '@angular/core': '>=18.0.0'
+      rxjs: ^6.5.3 || ^7.4.0
+
+  '@ng-icons/phosphor-icons@29.5.1':
+    resolution: {integrity: sha512-5KhLbgPPLpEze5hOyzvPsXUh0VywUiDCJEi/8zclR2HeE+/zX2jApXnGF+1N1jw60MnQu23dun5q8n5RTZmTGA==}
 
   '@ngrx/effects@18.0.2':
     resolution: {integrity: sha512-YojXcOD9Lsq4kl2HCjENccyUM/mOlgBdtddsg9j/ojzSUgu3ZuBVKLN3atrL2TJYkbMX1MN0RzafSkL3TPGFIA==}
@@ -8663,6 +8679,17 @@ snapshots:
 
   '@msgpackr-extract/msgpackr-extract-win32-x64@3.0.3':
     optional: true
+
+  '@ng-icons/core@29.5.1(@angular/common@18.2.6(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)':
+    dependencies:
+      '@angular/common': 18.2.6(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1)
+      '@angular/core': 18.2.6(rxjs@7.8.1)(zone.js@0.14.10)
+      rxjs: 7.8.1
+      tslib: 2.7.0
+
+  '@ng-icons/phosphor-icons@29.5.1':
+    dependencies:
+      tslib: 2.7.0
 
   '@ngrx/effects@18.0.2(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(@ngrx/store@18.0.2(@angular/core@18.2.6(rxjs@7.8.1)(zone.js@0.14.10))(rxjs@7.8.1))(rxjs@7.8.1)':
     dependencies:
