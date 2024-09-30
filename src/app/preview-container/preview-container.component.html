@@ -1,23 +1,27 @@
 @if (views().length > 0 && token()) {
   <app-share-content-sub-title>Your last previews</app-share-content-sub-title>
-  <div class="grid grid-cols-4 gap-4">
+
+  <div
+    class="carousel carousel-center w-full space-x-4 rounded-box bg-neutral p-4">
     @for (view of views(); track $index) {
-      <div class="card card-compact w-96 bg-neutral shadow-xl">
-        <figure>
-          <img [src]="view.preview" [alt]="view.previewAltTitle" />
-        </figure>
-        <div class="card-body">
-          @if (view.title) {
-            <h2 class="card-title">{{ view.title }}</h2>
-          }
-          @if (view.description) {
-            <p>{{ view.description }}</p>
-          }
-          <p>
-            <a [href]="view.href" class="link" target="_blank">
-              {{ view.shortUrl }}
-            </a>
-          </p>
+      <div class="carousel-item">
+        <div class="card card-compact w-96 bg-base-100 shadow-xl">
+          <figure>
+            <img [src]="view.preview" [alt]="view.previewAltTitle" />
+          </figure>
+          <div class="card-body">
+            @if (view.title) {
+              <h2 class="card-title">{{ view.title }}</h2>
+            }
+            @if (view.description) {
+              <p>{{ view.description }}</p>
+            }
+            <p>
+              <a [href]="view.href" class="link" target="_blank">
+                {{ view.shortUrl }}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     }

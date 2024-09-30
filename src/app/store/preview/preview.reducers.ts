@@ -30,7 +30,38 @@ export const previewFeature = createFeature({
       PreviewActions.applyInitialStateFromLocalStorage,
       (_, { state }): PreviewState => ({
         ...state,
-        previews: [],
+        previews: [
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+          {
+            url: new URL('https://rpm.kiev.ua'),
+            preview: 'https://picsum.photos/400/300',
+            status: 'done',
+          },
+        ],
         isLoading: false,
       })
     ),
