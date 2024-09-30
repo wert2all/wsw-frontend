@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.5](https://github.com/wert2all/previewly-frontend/compare/v0.0.4...v0.0.5) (2024-09-30)
+
+### Features
+
+- add firebase support ([a8604cb](https://github.com/wert2all/previewly-frontend/commit/a8604cb4b86723caea0419af72c6651f4b633916))
+- add footer ([6db049c](https://github.com/wert2all/previewly-frontend/commit/6db049c002df28f9cebdde0a2f2c21a42e838b09))
+- add icons ([4808907](https://github.com/wert2all/previewly-frontend/commit/48089077277449ac89528b0eb6095496e41eeadd))
+
+### Bug Fixes
+
+- fix content container for mobile ([7c97b48](https://github.com/wert2all/previewly-frontend/commit/7c97b48cf4b854f61db557cc6a7b852226ee307b))
+- fix firebase ([a8575b5](https://github.com/wert2all/previewly-frontend/commit/a8575b5381c9bbd9db297c2781b7d1e285fa0943))
+- fix footer ([649768c](https://github.com/wert2all/previewly-frontend/commit/649768c3d9d41e1bec2d936ca5b65687db797922))
+- fix footer ([09a1777](https://github.com/wert2all/previewly-frontend/commit/09a17771d161cc187ffd853a12237006af960637))
+- fix github button ([256357f](https://github.com/wert2all/previewly-frontend/commit/256357f062d87a92e807e91ffe75d6d815441c3d))
+- fix input field ([a5e5465](https://github.com/wert2all/previewly-frontend/commit/a5e54652dff59904fea47c6ff01bb1c56c3ba2d1))
+- fix padding of logo container ([3a4c758](https://github.com/wert2all/previewly-frontend/commit/3a4c758d25da8517c32c35b094a6cfc5fe20d63b))
+- fix preview carousel ([83bc8d8](https://github.com/wert2all/previewly-frontend/commit/83bc8d801078d7d777a53eb64234b6cb16a0b9e3))
+- remove dump values ([61ab748](https://github.com/wert2all/previewly-frontend/commit/61ab748c6b21e9357c86266b9e68545fc6c09e72))
+- small design fixes ([ce64cfc](https://github.com/wert2all/previewly-frontend/commit/ce64cfc264d35405358ddc3daf1b8f4859c9d923))
+
 ## [0.0.4](https://github.com/wert2all/previewly-frontend/compare/v0.0.3...v0.0.4) (2024-09-30)
 
 ### Features
