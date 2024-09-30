@@ -31,36 +31,36 @@ export const previewFeature = createFeature({
       (_, { state }): PreviewState => ({
         ...state,
         previews: [
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
-          {
-            url: new URL('https://rpm.kiev.ua'),
-            preview: 'https://picsum.photos/400/300',
-            status: 'done',
-          },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
+          // {
+          //   url: new URL('https://rpm.kiev.ua'),
+          //   preview: 'https://picsum.photos/400/300',
+          //   status: 'done',
+          // },
         ],
         isLoading: false,
       })
