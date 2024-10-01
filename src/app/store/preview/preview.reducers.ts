@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { PreviewActions } from './preview.actions';
-import { PreviewState } from './preview.types';
+import { Preview, PreviewState } from './preview.types';
 
 const initialState: PreviewState = {
   token: undefined,
@@ -17,6 +17,7 @@ export const previewFeature = createFeature({
       PreviewActions.successCreateToken,
       PreviewActions.emptyToken,
       PreviewActions.applyInitialStateFromLocalStorage,
+      PreviewActions.successAddNewUrl,
       (state): PreviewState => ({ ...state, isLoading: false })
     ),
 
@@ -30,41 +31,27 @@ export const previewFeature = createFeature({
       PreviewActions.applyInitialStateFromLocalStorage,
       (_, { state }): PreviewState => ({
         ...state,
-        previews: [
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-          // {
-          //   url: new URL('https://rpm.kiev.ua'),
-          //   preview: 'https://picsum.photos/400/300',
-          //   status: 'done',
-          // },
-        ],
+        previews: [],
         isLoading: false,
       })
     ),
+
+    on(PreviewActions.successAddNewUrl, (state, { preview }) => {
+      const sameUrls = state.previews.filter(
+        item => item.url.toString() == preview.url.toString()
+      );
+      const newUrl: Preview | null =
+        sameUrls.length === 0
+          ? {
+              url: preview.url,
+              preview: preview.preview,
+              status: preview.status,
+            }
+          : null;
+      return newUrl !== null
+        ? { ...state, previews: [...state.previews, newUrl] }
+        : { ...state };
+    }),
 
     on(
       PreviewActions.successCreateToken,
