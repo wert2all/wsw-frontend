@@ -37,20 +37,25 @@ export const previewFeature = createFeature({
     ),
 
     on(PreviewActions.successAddNewUrl, (state, { preview }) => {
-      const sameUrls = state.previews.filter(
-        item => item.url.toString() == preview.url.toString()
+      const isEqual = (previewItem: Preview, updated: Preview) =>
+        previewItem.url.toString() == updated.url.toString();
+
+      const updatedPreview: Preview = {
+        url: preview.url,
+        preview: preview.preview,
+        status: preview.status,
+      };
+
+      const updatedPreviews = state.previews.map(item =>
+        isEqual(item, preview) ? { ...item, ...updatedPreview } : item
       );
-      const newUrl: Preview | null =
-        sameUrls.length === 0
-          ? {
-              url: preview.url,
-              preview: preview.preview,
-              status: preview.status,
-            }
-          : null;
-      return newUrl !== null
-        ? { ...state, previews: [...state.previews, newUrl] }
-        : { ...state };
+
+      return {
+        ...state,
+        previews: updatedPreviews.findIndex(item => isEqual(item, preview))
+          ? [...updatedPreviews, updatedPreview]
+          : updatedPreviews,
+      };
     }),
 
     on(
