@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.6](https://github.com/wert2all/previewly-frontend/compare/v0.0.5...v0.0.6) (2024-10-10)
+
+### Features
+
+- show preview after add URL ([d7c1d06](https://github.com/wert2all/previewly-frontend/commit/d7c1d06d31fd8e2a45bba10833a1473b3250804f))
+- showing preview after adding url ([3c4b4ce](https://github.com/wert2all/previewly-frontend/commit/3c4b4ce921ea4315dcd0966b24bad958f8adaf51))
+
+### Bug Fixes
+
+- add loader ([07b202d](https://github.com/wert2all/previewly-frontend/commit/07b202d9613c3389488b41d3512f10f896b1176b))
+
 ## [0.0.5](https://github.com/wert2all/previewly-frontend/compare/v0.0.4...v0.0.5) (2024-09-30)
 
 ### Features
