@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { PreviewActions } from './preview.actions';
-import { Preview, PreviewState } from './preview.types';
+import { PreviewItem, PreviewState } from './preview.types';
 
 const initialState: PreviewState = {
   token: undefined,
@@ -36,27 +36,34 @@ export const previewFeature = createFeature({
       })
     ),
 
-    on(PreviewActions.successAddNewUrl, (state, { preview }) => {
-      const isEqual = (previewItem: Preview, updated: Preview) =>
-        previewItem.url.toString() == updated.url.toString();
+    on(
+      PreviewActions.successAddNewUrl,
+      PreviewActions.successUpdatePreview,
+      (state, { url, status, preview }) => {
+        const isEqual = (previewItem: PreviewItem, url: string) =>
+          previewItem.url.toString() == url;
 
-      const updatedPreview: Preview = {
-        url: preview.url,
-        preview: preview.preview,
-        status: preview.status,
-      };
+        const updatedPreview: PreviewItem = {
+          url: new URL(url),
+          data: {
+            ...preview,
+          },
+          status: status,
+          error: null,
+        };
 
-      const updatedPreviews = state.previews.map(item =>
-        isEqual(item, preview) ? { ...item, ...updatedPreview } : item
-      );
+        const updatedPreviews = state.previews.map(item =>
+          isEqual(item, url) ? { ...item, ...updatedPreview } : item
+        );
 
-      return {
-        ...state,
-        previews: updatedPreviews.findIndex(item => isEqual(item, preview))
-          ? [...updatedPreviews, updatedPreview]
-          : updatedPreviews,
-      };
-    }),
+        return {
+          ...state,
+          previews: updatedPreviews.findIndex(item => isEqual(item, url))
+            ? [...updatedPreviews, updatedPreview]
+            : updatedPreviews,
+        };
+      }
+    ),
 
     on(
       PreviewActions.successCreateToken,

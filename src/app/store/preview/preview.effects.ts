@@ -7,14 +7,15 @@ import {
 } from '@ngrx/effects';
 import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
-import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { catchError, exhaustMap, map, of, tap, timer } from 'rxjs';
 
 import { ApiClient } from '../../api/graphql';
 import { StoreDispatchEffect, StoreUnDispatchEffect } from '../../app.types';
 import { PreviewActions } from './preview.actions';
 import { previewFeature } from './preview.reducers';
-import { Preview } from './preview.types';
 import { StoragePreviewService } from './storage-preview.service';
+
+const shouldUpdatePreview = (status: string) => status === 'pending';
 
 const initState = (
   actions$ = inject(Actions),
@@ -37,8 +38,8 @@ const checkSavedToken = (
 ) =>
   actions$.pipe(
     ofType(PreviewActions.checkLocalStorageToken),
-    exhaustMap(({ token }) => {
-      return api.verifyToken({ token: token }).pipe(
+    exhaustMap(({ token }) =>
+      api.verifyToken({ token: token }).pipe(
         map(result => result.data?.isValid || false),
         map(isValid =>
           isValid
@@ -47,8 +48,8 @@ const checkSavedToken = (
               })
             : PreviewActions.createNewToken()
         )
-      );
-    })
+      )
+    )
   );
 
 const createNewToken = (actions$ = inject(Actions), api = inject(ApiClient)) =>
@@ -91,26 +92,92 @@ const addUrl = (
         ? api.addUrl({ token: token, url: url }).pipe(
             map(result => result.data?.preview),
             map(preview => {
-              let previewData: Preview | undefined = undefined;
-              if (preview) {
-                previewData = {
-                  status: preview.status,
-                  url: new URL(url),
-                };
-                if (preview.image) {
-                  previewData.preview = preview.image;
-                }
+              if (!preview) {
+                throw Error('No preview');
               }
-              return previewData;
+              return {
+                url: url,
+                status: preview.status,
+                preview: {
+                  id: preview.id,
+                  image: preview.image,
+                },
+              };
             })
           )
         : of(undefined)
     ),
-    map(preview =>
-      preview
-        ? PreviewActions.successAddNewUrl({ preview })
+    map(data =>
+      data?.preview
+        ? PreviewActions.successAddNewUrl({
+            url: data.url,
+            status: data.status,
+            preview: { preview: data.preview.image },
+          })
         : PreviewActions.emptyTokenOnAddingNewUrl()
     )
+  );
+
+const startTimerForUpdatePreviewAfterAdding = (actions$ = inject(Actions)) =>
+  actions$.pipe(
+    ofType(
+      PreviewActions.successAddNewUrl,
+      PreviewActions.successUpdatePreview
+    ),
+    map(action => (shouldUpdatePreview(action.status) ? action : null)),
+    exhaustMap(action =>
+      timer(3000).pipe(
+        map(() =>
+          action
+            ? PreviewActions.updatePreview({ url: action.url })
+            : PreviewActions.shouldNotUpdatePreview()
+        )
+      )
+    )
+  );
+
+const updatePreview = (
+  actions$ = inject(Actions),
+  store = inject(Store),
+  api = inject(ApiClient)
+) =>
+  actions$.pipe(
+    ofType(PreviewActions.updatePreview),
+    concatLatestFrom(() => store.select(previewFeature.selectToken)),
+    map(([{ url }, token]) => {
+      if (token) {
+        return { url, token };
+      } else {
+        throw Error('No token');
+      }
+    }),
+    exhaustMap(({ url, token }) =>
+      api.getPreview({ url: url, token: token }).pipe(
+        map(result => result.data.preview),
+        map(preview => {
+          if (preview) {
+            return {
+              id: preview.id,
+              url: new URL(url),
+              status: preview.status.toString(),
+              image: preview.image,
+            };
+          } else {
+            throw Error('No preview');
+          }
+        }),
+        map(preview =>
+          PreviewActions.successUpdatePreview({
+            url,
+            status: preview.status,
+            preview: {
+              preview: preview.image,
+            },
+          })
+        )
+      )
+    ),
+    catchError(err => of(PreviewActions.errorUpdatePreview({ error: err })))
   );
 
 export const previewEffects = {
@@ -121,4 +188,11 @@ export const previewEffects = {
   successCreateToken: createEffect(successCreateToken, StoreUnDispatchEffect),
 
   addUrl: createEffect(addUrl, StoreDispatchEffect),
+
+  successAddUrl: createEffect(
+    startTimerForUpdatePreviewAfterAdding,
+    StoreDispatchEffect
+  ),
+
+  updatePreview: createEffect(updatePreview, StoreDispatchEffect),
 };
