@@ -1,11 +1,14 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": false,
+  "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "angular-schematics.schematicsDefaultOptions": {
     "angular-*": {
       "skipStyle": true,
       "externalTemplate": true
     }
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "google.nix-language"
   }
 }
