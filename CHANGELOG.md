@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.8](https://github.com/wert2all/previewly-frontend/compare/v0.0.7...v0.0.8) (2024-10-10)
+
+### Features
+
+- add favicon ([a1f3252](https://github.com/wert2all/previewly-frontend/commit/a1f32525783c11578e30868aa495e96f3023f347))
+
 ## [0.0.7](https://github.com/wert2all/previewly-frontend/compare/v0.0.5...v0.0.7) (2024-10-10)
 
 ### Features
